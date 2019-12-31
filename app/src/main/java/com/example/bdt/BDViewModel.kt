@@ -13,12 +13,12 @@ class BDViewModel(application: Application) : AndroidViewModel(application) {
     val allBDs: LiveData<List<BD>>
 
     init {
-        val bdDao = BDDatabase.getInstance(application).bdDao()
+        val bdDao = BDDatabase.getInstance(application,viewModelScope).bdDao()
         repository = BDRepository(bdDao)
         allBDs = repository.allBD
     }
 
-    fun insert(bd: BD) = viewModelScope.launch {
+    fun insertBD(bd: BD) = viewModelScope.launch {
         repository.insertBD(bd)
     }
 }

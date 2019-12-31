@@ -14,7 +14,7 @@ interface BDDao {
     @Query("SELECT * FROM birthday")
     fun getAllBD():LiveData<List<BD>>
 
-    @Delete
-    suspend fun deleteBD(bd: BD)
+    @Query("DELETE FROM birthday")
+    suspend fun deleteAllBD()
 
 }
